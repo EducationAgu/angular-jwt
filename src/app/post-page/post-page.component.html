@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="page-title">
+        <h4>Данные:</h4>
+    </div>
+    
+    <div 
+        class="row"
+        *ngIf="posts$ | async as posts; else loader">
+        <div class="col s12">
+            <div class="collection">
+                
+                <a 
+                *ngFor="let post of posts"
+                
+                class="collection-item">
+                {{post.namePost}}
+                </a>
+                
+            </div>
+            <ng-template>
+                <div class="center">
+                        Ничего нет
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+
