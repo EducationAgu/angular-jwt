@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from "./interfaces";
 import { Observable } from "rxjs";
 
-import { environment } from '@environments/environment';
-
 @Injectable({
     providedIn:'root'
 })
@@ -16,7 +14,7 @@ export class PostService {
     }
 
     fetch(): Observable<Post[]>{
-        return this.http.get<Post[]>(`${environment.apiUrl}/api/post`)
+        return this.http.get<Post[]>(`/api/post`)
     }
 
 }
