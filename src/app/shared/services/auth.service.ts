@@ -4,6 +4,8 @@ import { User } from "./interfaces";
 import { Observable } from "rxjs";
 import { tap } from 'rxjs/operators';
 
+import {environment} from "@environments/environment.prod";
+
 @Injectable({
     providedIn: 'root'
 })
@@ -16,7 +18,7 @@ export class AuthService {
     }
 
     rsaKey() : Observable<{key: string}> {
-      return this.http.get<{key:string}>(`/api/user/rsa-key`).
+      return this.http.get<{key:string}>(`${environment.api}/api/user/rsa-key`).
       pipe(
         tap(
           ({key}) => { return key;}
@@ -25,7 +27,7 @@ export class AuthService {
     }
 
     login(user: User): Observable<{token: string}> {
-      return this.http.post<{token:string}>(`/api/user/login`, user).
+      return this.http.post<{token:string}>(`${environment.api}/api/user/login`, user).
         pipe(
           tap(
             ({token}) => {
