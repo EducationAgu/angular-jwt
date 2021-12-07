@@ -2,20 +2,20 @@
     <div class="page-title">
         <h4>Данные:</h4>
     </div>
-    
-    <div 
+
+    <div
         class="row"
         *ngIf="posts$ | async as posts; else loader">
         <div class="col s12">
             <div class="collection">
-                
-                <a 
+
+                <a
                 *ngFor="let post of posts"
-                
+
                 class="collection-item">
-                {{post.namePost}}
+                {{post.name}}
                 </a>
-                
+
             </div>
             <ng-template>
                 <div class="center">
@@ -24,7 +24,7 @@
             </ng-template>
         </div>
     </div>
-    
+
 </div>
 
 <ng-template #loader>

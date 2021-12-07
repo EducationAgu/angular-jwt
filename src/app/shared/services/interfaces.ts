@@ -5,13 +5,13 @@ export interface User {
 
 
 export interface Post {
-    namePost:string,
+    name:string,
     user?: string,
-    idPost?: string
+    id?: string
 }
 
 
 export interface Office {
-    namePost:string,
-    idPost?: string
+    name:string,
+    id?: string
 }
