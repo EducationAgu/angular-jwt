@@ -2,6 +2,24 @@
     <div class="page-title">
         <h4>Данные:</h4>
     </div>
+  <form class="card"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+    <div class="card-content">
+      <div class="input-field">
+        <input
+          formControlName="searchLine"
+          id="searchLine" type="text">
+        <label for="searchLine">Login:</label>
+
+      </div>
+    </div>
+    <div class="card-action">
+      <button type="submit"
+              [disabled]="form.invalid || form.disabled"
+              class="modal-action btn waves-effect">Поиск</button>
+    </div>
+  </form>
 
     <div
         class="row"

@@ -18,4 +18,7 @@ export class PostService {
         return this.http.get<Post[]>(`${environment.api}/api/post/`)
     }
 
+    getSearch(pattern: String) : Observable<Post[]>{
+      return this.http.post<Post[]>(`${environment.api}/api/post/all`, {search: pattern})
+    }
 }
