@@ -24,6 +24,7 @@
     color: black;
     margin: 0px 10px;
     box-shadow:0 1px 4px rgb(0 0 0 / 20%);
+    border-radius: 2px;
    
 }
 
@@ -36,4 +37,23 @@
     display: flex;
     padding: 10px;
     margin-bottom: 20px;
+}
+
+.check {
+    width: 24px;
+    height: 24px;   
+}
+
+
+input[type="checkbox"]:not(:checked) {
+    opacity: 1;
+    position: static;
+    pointer-events:painted;
+    
+}
+
+input[type="checkbox"]:checked {
+    opacity: 1;
+    position: static;
+    pointer-events:painted;
 }

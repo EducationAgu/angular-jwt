@@ -8,12 +8,14 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { ContactsPageComponent } from './contacts-page/contacts-page.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent, children: [
         {path: '', redirectTo:'/login', pathMatch:'full'},
-        {path: 'login', component: LoginPageComponent}
+        {path: 'login', component: LoginPageComponent},
+        {path: 'register', component: RegisterComponent}
     ]
   },
   {

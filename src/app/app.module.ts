@@ -15,6 +15,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { ContactsPageComponent } from './contacts-page/contacts-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { PostModalComponent } from './post-modal/post-modal.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PostModalComponent } from './post-modal/post-modal.component';
     LoaderComponent,
     ContactsPageComponent,
     FavoritesPageComponent,
-    PostModalComponent
+    PostModalComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
