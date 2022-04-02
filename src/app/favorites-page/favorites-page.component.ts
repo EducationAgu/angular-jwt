@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
-import { Post } from '../shared/services/interfaces';
-import { PostService } from './../shared/services/post.services';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
 import { PostModalComponent } from '../post-modal/post-modal.component';
+import { Post } from '../shared/services/interfaces';
+import { PostService } from '../shared/services/post.services';
 
 @Component({
-  selector: 'app-post-page',
-  templateUrl: './post-page.component.html',
-  styleUrls: ['./post-page.component.css']
+  selector: 'app-favorites-page',
+  templateUrl: './favorites-page.component.html',
+  styleUrls: ['./favorites-page.component.css']
 })
-export class PostPageComponent implements OnInit {
+export class FavoritesPageComponent implements OnInit {
 
   @ViewChild(PostModalComponent) menu!: PostModalComponent; 
   form!: FormGroup;
@@ -39,15 +39,11 @@ export class PostPageComponent implements OnInit {
     this.menu.openEdit(e, data)
   }
 
-  openMenuAdd(e) {
-    this.menu.openAdd(e)
-  }
-
-  add(data:Post) {
-    // добавить в избранное
-  }
 
   delete(data: Post) {
-    //удалить
+    //удалить из избранного
   }
+
+  
+
 }

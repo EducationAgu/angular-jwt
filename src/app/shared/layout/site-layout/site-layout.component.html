@@ -1,20 +1,10 @@
-<ul class="sidenav sidenav-fixed a-sidenav">
-    <h4>Client</h4>
-
-
-    <li class="bold"
-    *ngFor="let link of links"
-    routerLinkActive="active"
-    >
-        <a [routerLink]="[link.url]" class="waves-effect waves-orange">{{link.name}}</a>
-    </li>
-
-
-    <li class="bold last">
-        <a href="#" class="waves-effect waves-orange" (click)="logout($event)">Выйти</a>
-    </li>
-</ul>
-
-<main class="container">
-    <router-outlet></router-outlet>
-</main>
+<div class="page">
+    <div class="navbar-page">
+        <a *ngFor="let link of links" routerLinkActive="active" [routerLink]="[link.url]" class="navbar-page__nav">{{link.name}}</a>
+        <button class="logout" (click)="logout($event)">Выйти</button>
+    </div>
+    
+    <main class="content">
+        <router-outlet></router-outlet>
+    </main>
+</div>

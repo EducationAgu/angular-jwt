@@ -1,41 +1,3 @@
-<!--
-<form class="card"
-[formGroup]="form"
-(ngSubmit)="onSubmit()">
-      <div class="card-content">
-          <span class="card-title">Войти в систему</span>
-          <div class="input-field">
-              <input 
-              formControlName="login"
-              [ngClass]="{'invalid': form.get('login').invalid && form.get('login').touched}"
-              id="login" type="text">
-              <label for="login">Login:</label>
-              <span class="helper-text red-text"
-              *ngIf="form.get('login').invalid && form.get('login').touched"
-              >
-              <span *ngIf="form.get('login').errors['required']">Login не должен быть пустым</span>
-            </span>
-          </div>
-          <div class="input-field">
-              <input formControlName="password"
-              [ngClass]="{'invalid': form.get('password').invalid && form.get('password').touched}"
-              id="password" type="password">
-              <label for="password">Пароль:</label>
-              <span class="helper-text red-text"
-              *ngIf="form.get('password').invalid && form.get('password').touched"
-              >
-              <span *ngIf="form.get('password').errors['required']">Password не должен быть пустым</span>
-            </span>
-          </div>
-      </div>
-      <div class="card-action">
-          <button type="submit" 
-          [disabled]="form.invalid "
-          class="modal-action btn waves-effect">Войти</button>
-      </div>
-</form>
--->
-
 <form class="card"
 [formGroup]="form"
 (ngSubmit)="onSubmit()">
@@ -45,19 +7,18 @@
               <input 
               formControlName="login"
               id="login" type="text">
-              <label for="login">Login:</label>
+              <label for="login">Логин</label>
              
           </div>
           <div class="input-field">
               <input formControlName="password"
               id="password" type="password">
-              <label for="password">Пароль:</label>
+              <label for="password">Пароль</label>
              
           </div>
       </div>
       <div class="card-action">
-          <button type="submit" 
-          [disabled]="form.invalid || form.disabled"
+          <button class="container-btn" type="submit" 
           class="modal-action btn waves-effect">Войти</button>
       </div>
 </form>

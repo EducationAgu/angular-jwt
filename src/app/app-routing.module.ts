@@ -6,7 +6,8 @@ import { LoginPageComponent } from './login-page/login-page.component'
 import { AuthGuard } from './shared/classes/auth.guard';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
-import { OfficePageComponent } from './office-page/office-page.component';
+import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
+import { ContactsPageComponent } from './contacts-page/contacts-page.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard] ,children: [
       {path: 'overview', component: OverviewPageComponent},
       {path: 'post', component: PostPageComponent},
-      {path: 'office', component: OfficePageComponent}
+      {path: 'favorites', component: FavoritesPageComponent},
+      {path: 'contacts', component: ContactsPageComponent}
     ]
   }
 ];

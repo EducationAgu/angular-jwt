@@ -9,9 +9,3 @@ export interface Post {
     user?: string,
     id?: string
 }
-
-
-export interface Office {
-    name:string,
-    id?: string
-}

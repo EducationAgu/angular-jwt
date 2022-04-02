@@ -10,9 +10,10 @@ import { AuthService } from './../../services/auth.service';
 export class SiteLayoutComponent implements OnInit {
 
   links = [
-    {url: '/overview', name: 'Overview'},
-    {url: '/post', name: 'Post'},
-    {url: '/office', name: 'Office'}
+    {url: '/overview', name: 'Основная'},
+    {url: '/post', name: 'Посты'},
+    {url: '/favorites', name: 'Избранное'},
+    {url: '/contacts', name: 'Контакты'}
   ]
 
   constructor(private auth: AuthService,

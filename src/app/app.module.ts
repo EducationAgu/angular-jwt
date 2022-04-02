@@ -11,8 +11,10 @@ import { SiteLayoutComponent } from './shared/layout/site-layout/site-layout.com
 import { TokenInterceptor } from './shared/classes/token.interceptor';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
-import { OfficePageComponent } from './office-page/office-page.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { ContactsPageComponent } from './contacts-page/contacts-page.component';
+import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
+import { PostModalComponent } from './post-modal/post-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     SiteLayoutComponent,
     OverviewPageComponent,
     PostPageComponent,
-    OfficePageComponent,
-    LoaderComponent
+    LoaderComponent,
+    ContactsPageComponent,
+    FavoritesPageComponent,
+    PostModalComponent
   ],
   imports: [
     BrowserModule,
