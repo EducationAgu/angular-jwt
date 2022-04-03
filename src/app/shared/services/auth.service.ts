@@ -38,6 +38,18 @@ export class AuthService {
         );
     }
 
+    register(user: User): Observable<{token: string}> {
+      return this.http.post<{token:string}>(`${environment.api}/api/user/register`, user).
+      pipe(
+        tap(
+          ({token}) => {
+            localStorage.setItem('auth-token', token)
+            this.setToken(token)
+          }
+        )
+      );
+    }
+
     setToken(token: string): void {
         this.token = token;
     }

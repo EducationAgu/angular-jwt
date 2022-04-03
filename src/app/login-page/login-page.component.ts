@@ -45,15 +45,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.form.disable()
-    console.log(this.form.value);
+    this.form.disable();
     this.aSub =
       this.auth.rsaKey().subscribe(
         (key) => {
-          console.log(key)
+
           const rsaKey = forge.pki.publicKeyFromPem(key);
-          // @ts-ignore
-          console.log(this.form.value.password);
           // @ts-ignore
           this.form.value.password = window.btoa(rsaKey.encrypt(this.form.value.password));
           this.auth.login(this.form.value).subscribe(
