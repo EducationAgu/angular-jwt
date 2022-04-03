@@ -14,6 +14,7 @@ export class PostPageComponent implements OnInit {
 
   @ViewChild(PostModalComponent) menu!: PostModalComponent; 
   form!: FormGroup;
+  formSort!: FormGroup;
   posts$: Observable<Post[]> | undefined
   aSub!: Subscription;
 
@@ -25,6 +26,10 @@ export class PostPageComponent implements OnInit {
     this.form = new FormGroup({
       searchLine: new FormControl(null, Validators.required),
     })
+
+    this.formSort = new FormGroup({
+      sort: new FormControl(null, Validators.required),
+    })
   }
 
   onSubmit(): void {
@@ -33,6 +38,13 @@ export class PostPageComponent implements OnInit {
     this.posts$ = this.postService.getSearch(this.form.value.searchLine)
 
     this.form.enable()
+  }
+
+  onSubmitSort(): void {
+    this.formSort.disable()
+    
+
+    this.formSort.enable()
   }
 
   openMenuEdit(e, data:Post) {
