@@ -3,3 +3,20 @@
     flex-direction: column;
     margin: 20px 40px;
 }
+
+.img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+
+
+.container-col {
+    display: flex;
+
+
+}
+
+p {
+    margin-right: 20px;
+}

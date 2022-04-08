@@ -12,4 +12,16 @@ export class ContactsPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  refer() {
+    window.open('https://web-telegram.ru')
+  }
+
+  dom() {
+    window.open('https://web-telegram.ru')
+  }
+
+  tel() {
+    window.open('https://web-telegram.ru')
+  }
+
 }

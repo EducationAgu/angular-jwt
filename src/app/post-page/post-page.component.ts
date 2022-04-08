@@ -17,12 +17,26 @@ export class PostPageComponent implements OnInit {
   formSort!: FormGroup;
   posts$: Observable<Post[]> | undefined
   aSub!: Subscription;
+  hashToId: Map<string,Post>;
+  data!: Post[];
+  
+  constructor(private postService: PostService) {
+    this.hashToId = new Map();
+   }
 
-  constructor(private postService: PostService) { }
+  randomInteger() {
+    let min = 1
+    let max = 1000
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   ngOnInit(): void {
-    this.posts$ = this.postService.getSearch("")
-
+    this.postService.getSearch("").subscribe(data => 
+      data.forEach((val, index) => {
+        this.hashToId.set(this.randomInteger().toString(), val);
+      })
+    )
+    
     this.form = new FormGroup({
       searchLine: new FormControl(null, Validators.required),
     })
@@ -34,7 +48,7 @@ export class PostPageComponent implements OnInit {
 
   onSubmit(): void {
     this.form.disable()
-
+    console.log(this.form.value)
     this.posts$ = this.postService.getSearch(this.form.value.searchLine)
 
     this.form.enable()
