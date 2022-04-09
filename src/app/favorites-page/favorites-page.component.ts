@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { PostModalComponent } from '../post-modal/post-modal.component';
-import { Post } from '../shared/services/interfaces';
+import {Post, Posts} from '../shared/services/interfaces';
 import { PostService } from '../shared/services/post.services';
+import { Request } from "../shared/classes/request";
 
 @Component({
   selector: 'app-favorites-page',
@@ -12,16 +13,16 @@ import { PostService } from '../shared/services/post.services';
 })
 export class FavoritesPageComponent implements OnInit {
 
-  @ViewChild(PostModalComponent) menu!: PostModalComponent; 
+  @ViewChild(PostModalComponent) menu!: PostModalComponent;
   form!: FormGroup;
   formSort!: FormGroup;
-  posts$: Observable<Post[]> | undefined
+  posts$: Observable<Posts> | undefined
   aSub!: Subscription;
 
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.posts$ = this.postService.getSearch("")
+    this.posts$ = this.postService.getSearch(new Request())
 
     this.form = new FormGroup({
       searchLine: new FormControl(null, Validators.required),
@@ -35,19 +36,23 @@ export class FavoritesPageComponent implements OnInit {
   onSubmit(): void {
     this.form.disable()
 
-    this.posts$ = this.postService.getSearch(this.form.value.searchLine)
+    let req = new Request();
+
+    req.favOnly = true;
+
+    this.posts$ = this.postService.getSearch(req)
 
     this.form.enable()
   }
 
   onSubmitSort(): void {
     this.formSort.disable()
-    
+// TODO
 
     this.formSort.enable()
   }
 
-  openMenuEdit(e, data:Post) {
+  openMenuEdit(e: MouseEvent, data:Post) {
     this.menu.openEdit(e, data)
   }
 
@@ -56,6 +61,6 @@ export class FavoritesPageComponent implements OnInit {
     //удалить из избранного
   }
 
-  
+
 
 }

@@ -4,6 +4,11 @@ export interface User {
 }
 
 
+export interface Posts {
+  posts: Post[]
+  allAmount: number
+}
+
 export interface Post {
     name:string,
     user?: string,
