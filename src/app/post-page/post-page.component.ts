@@ -23,9 +23,9 @@ export class PostPageComponent implements OnInit {
 
   ngOnInit(): void {
     let req = new Request();
+    console.log('init')
     this.posts$ = this.postService.getSearch(req)
 
-    this.posts$.subscribe((data) => {console.log(data)})
     this.form = new FormGroup({
       searchLine: new FormControl(null, Validators.required),
     })
@@ -39,6 +39,8 @@ export class PostPageComponent implements OnInit {
     this.form.disable()
     let req = new Request();
     req.filter = this.form.value.searchLine;
+    console.log('submit')
+
     this.posts$ = this.postService.getSearch(req)
     this.form.enable()
   }
@@ -52,6 +54,8 @@ export class PostPageComponent implements OnInit {
     let req = new Request();
     req.filter = this.form.value.searchLine;
     req.paging.skip = 10 * page;
+    console.log('pageChanging')
+
     this.posts$ = this.postService.getSearch(req)
   }
 

@@ -17,10 +17,6 @@ export class PostService {
 
     }
 
-    fetch(): Observable<Posts[]>{
-        return this.http.get<Posts[]>(`${environment.api}/api/post/`)
-    }
-
     getSearch(request: Request) : Observable<Posts>{
       return this.http.post<Posts>(`${environment.api}/api/post/all`, {request})
     }
