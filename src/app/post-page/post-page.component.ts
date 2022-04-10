@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import {Post, Posts} from '../shared/services/interfaces';
-import { PostService } from './../shared/services/post.services';
+import {Post, Posts} from '../shared/classes/post';
+import { PostService } from '../shared/services/post.services';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { PostModalComponent } from '../post-modal/post-modal.component';
 import { Request } from '../shared/classes/request'
@@ -62,7 +62,7 @@ export class PostPageComponent implements OnInit {
     this.menu.openAdd(e)
   }
 
-  add(data:Post) {
+  addToFavorite(data:Post) {
     // добавить в избранное
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { PostModalComponent } from '../post-modal/post-modal.component';
-import {Post, Posts} from '../shared/services/interfaces';
+import {Post, Posts} from '../shared/classes/post';
 import { PostService } from '../shared/services/post.services';
 import { Request } from "../shared/classes/request";
 
