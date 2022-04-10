@@ -25,6 +25,7 @@ export class PostPageComponent implements OnInit {
     let req = new Request();
     this.posts$ = this.postService.getSearch(req)
 
+    this.posts$.subscribe((data) => {console.log(data)})
     this.form = new FormGroup({
       searchLine: new FormControl(null, Validators.required),
     })
@@ -63,7 +64,11 @@ export class PostPageComponent implements OnInit {
   }
 
   addToFavorite(data:Post) {
-    // добавить в избранное
+    this.postService.addToFav(data.id)
+  }
+
+  removeFromFavorite(data:Post) {
+    this.postService.removeFromFavorite(data.id)
   }
 
   delete(data: Post) {

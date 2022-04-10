@@ -38,4 +38,20 @@ export class PostService {
          console.log(error)
         })
     }
+
+    addToFav (id: number): void {
+      this.http.post(`${environment.api}/api/post/addToFav`, {id: id}).subscribe( () => {},
+        error => {
+          console.log(error)
+        })
+      return
+    }
+
+    removeFromFavorite (id: number): void {
+      this.http.post(`${environment.api}/api/post/deleteFromFav`, {id: id}).subscribe( () => {},
+        error => {
+          console.log(error)
+        })
+      return
+    }
 }

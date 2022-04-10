@@ -8,10 +8,11 @@ export class User {
 export class Post {
   name!: string
   user?: string
-  id?: number
-
+  id: number
+  isFav: boolean
   constructor() {
-
+    this.isFav = false;
+    this.id = 0;
   }
 }
 
