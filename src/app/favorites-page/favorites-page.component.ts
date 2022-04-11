@@ -18,8 +18,13 @@ export class FavoritesPageComponent implements OnInit {
   formSort!: FormGroup;
   posts$: Observable<Posts> | undefined
   aSub!: Subscription;
+  currentPage: number;
 
-  constructor(private postService: PostService) { }
+
+  constructor(private postService: PostService) {
+    this.currentPage = 0;
+
+  }
 
   ngOnInit(): void {
     let req = new Request()
@@ -39,9 +44,8 @@ export class FavoritesPageComponent implements OnInit {
     this.form.disable()
 
     let req = new Request();
-
     req.favOnly = true;
-
+    req.filter = this.form.value.searchLine;
     this.posts$ = this.postService.getSearch(req)
 
     this.form.enable()
@@ -49,9 +53,28 @@ export class FavoritesPageComponent implements OnInit {
 
   onSubmitSort(): void {
     this.formSort.disable()
-// TODO
+
+    let req = new Request();
+    req.favOnly = true;
+    req.filter = this.form.value.searchLine;
+    req.paging.skip = 10 * this.currentPage;
+    req.sort.asc = this.formSort.value.sort !== 'desc';
+    req.sort.field = 'name';
+    this.posts$ = this.postService.getSearch(req)
 
     this.formSort.enable()
+  }
+
+  onChangePage(page: number): void {
+    let req = new Request();
+    req.favOnly = true;
+    req.filter = this.form.value.searchLine;
+    this.currentPage = page-1
+    req.paging.skip = 10 * this.currentPage;
+    req.sort.asc = this.formSort.value.sort !== 'desc';
+    req.sort.field = 'name';
+
+    this.posts$ = this.postService.getSearch(req)
   }
 
   openMenuEdit(e: MouseEvent, data:Post) {
