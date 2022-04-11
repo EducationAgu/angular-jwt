@@ -16,37 +16,38 @@
     </select>
     <button class="container-btn" type="submit">Сортировать</button>
   </form>
-  
+
   <table>
     <thead>
       <tr>
         <th>#</th>
         <th>Пост</th>
-        <!-- <th>В избранное</th> -->
+        <th>В избранное</th>
         <th>Редактировать</th>
         <th>Удалить</th>
        </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let item of hashToId.entries(); let i = index">
-        <th scope="row">{{i+1}}</th>
-        <td id="{{item[0]}}">{{item[1].name}}</td>
-        <!-- <td (click)="add(item[1])"><input class="check" type="checkbox"></td> -->
-        <td (click)="openMenuEdit($event, item[1])"><img src="././assets/images/edit.png"/></td>
-        <td (click)="delete(item[1])"><img src="././assets/images/del.png"/></td>
+    <tbody *ngIf="posts$ | async as posts">
+      <tr *ngFor="let post of posts.posts; let i = index">
+        <th scope="row">{{(10*currentPage)+ i+1}}</th>
+        <td>{{post.name}}</td>
+        <ng-template [ngIf]="post.isFav" [ngIfThen]="thenBlock"  [ngIfElse]="elseBlock" ]]>
+        </ng-template>
+        <ng-template #thenBlock>
+          <td (click)="removeFromFavorite(post)"><input class="check" checked type="checkbox"></td>
+        </ng-template>
+        <ng-template #elseBlock>
+          <td (click)="addToFavorite(post)"><input class="check" type="checkbox"></td>
+        </ng-template>
+
+        <td (click)="openMenuEdit($event, post)"><img src="././assets/images/edit.png"/></td>
       </tr>
-    </tbody>  
+      <ul class="pagination">
+        <div *ngFor="let p of 'x'.repeat(posts.allAmount+1).split(''); let ind = index">
+          <li class="waves-effect" (click)="onChangePage(ind+1)"><a>{{ind+1}}</a></li>
+        </div>
+      </ul>
+    </tbody>
   </table>
-  
-  <ul class="pagination">
-    <li class="disabled"><a href="#!">&lt;</a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!">&gt;</a></li>
-  </ul>
-  
 </div>
 
