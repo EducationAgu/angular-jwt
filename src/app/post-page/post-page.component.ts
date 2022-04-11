@@ -18,8 +18,10 @@ export class PostPageComponent implements OnInit {
   formSort!: FormGroup;
   posts$: Observable<Posts> | undefined
   aSub!: Subscription;
-
-  constructor(private postService: PostService) { }
+  currentPage: number;
+  constructor(private postService: PostService) {
+    this.currentPage = 0;
+  }
 
   ngOnInit(): void {
     let req = new Request();
@@ -47,14 +49,24 @@ export class PostPageComponent implements OnInit {
 
   onSubmitSort(): void {
     this.formSort.disable()
+
+    let req = new Request();
+    req.filter = this.form.value.searchLine;
+    req.paging.skip = 10 * this.currentPage;
+    req.sort.asc = this.formSort.value.sort !== 'desc';
+    req.sort.field = 'name';
+    this.posts$ = this.postService.getSearch(req)
+
     this.formSort.enable()
   }
 
   onChangePage(page: number): void {
     let req = new Request();
     req.filter = this.form.value.searchLine;
-    req.paging.skip = 10 * page;
-    console.log('pageChanging')
+    this.currentPage = page-1
+    req.paging.skip = 10 * this.currentPage;
+    req.sort.asc = this.formSort.value.sort !== 'desc';
+    req.sort.field = 'name';
 
     this.posts$ = this.postService.getSearch(req)
   }

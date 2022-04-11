@@ -22,7 +22,9 @@ export class FavoritesPageComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.posts$ = this.postService.getSearch(new Request())
+    let req = new Request()
+    req.favOnly = true
+    this.posts$ = this.postService.getSearch(req)
 
     this.form = new FormGroup({
       searchLine: new FormControl(null, Validators.required),
