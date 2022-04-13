@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MaterialService} from "../shared/classes/material.service";
 
 @Component({
   selector: 'app-contacts-page',
@@ -17,11 +18,12 @@ export class ContactsPageComponent implements OnInit {
   }
 
   dom() {
-    window.open('https://web-telegram.ru')
+    window.open('https://goo.su/U7sG')
   }
 
   tel() {
-    window.open('https://web-telegram.ru')
+    navigator.clipboard.writeText('85120000202')
+    MaterialService.toast('Номер скопирован в буфер обмена')
   }
 
 }

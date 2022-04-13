@@ -1,5 +1,15 @@
 <div class="container-post">
-    <h4>Информация</h4><br>
-    <p>Какая то ститистическая информация</p><br>
-    <p>Что здесь должно быть? что она хочет здесь видеть?</p>
+    <h4>Коментарии</h4><br>
+    <form class="search" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input class="container-field" formControlName="content" id="searchLine" type="text" placeholder="Котик">
+      <button class="container-btn" type="submit">Оставить коментарий</button>
+    </form>
+    <tbody *ngIf="comments$ | async as coms">
+    <tr *ngFor="let com of coms.Items; let i = index">
+      <hr/>
+      <td>{{com.user}} прокоментировал(-а)
+        <div [innerHTML]="com.content"></div>
+      </td>
+    </tr>
+    </tbody>
 </div>

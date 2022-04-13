@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Posts } from "../classes/post";
+import { Comments } from "../classes/comment"
 import { Post } from "../classes/post";
 import { Observable } from "rxjs";
 import {environment} from "@environments/environment.prod";
@@ -49,5 +50,17 @@ export class PostService {
           console.log(error)
         })
       return
+    }
+
+    addComment(comment: string): void {
+      this.http.post(`${environment.api}/api/post/com`, {comment: comment}).subscribe( () => {},
+        error => {
+          console.log(error)
+        })
+      return
+    }
+
+    getComments(): Observable<Comments> {
+      return this.http.post<Comments>(`${environment.api}/api/post/getCom`, {})
     }
 }

@@ -23,7 +23,6 @@ export class FavoritesPageComponent implements OnInit {
 
   constructor(private postService: PostService) {
     this.currentPage = 0;
-
   }
 
   ngOnInit(): void {
